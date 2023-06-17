@@ -15,8 +15,8 @@ from langchain.callbacks import get_openai_callback
 import os
 
 load_dotenv()
-print(os.getenv("OPENAI_API_KEY3"))
-openai_api_key = os.getenv("OPENAI_API_KEY3")
+
+openai_api_key = os.getenv("OPENAI_API_KEY")
 with st.sidebar:
     st.title("LLM PDF APP")
     st.markdown('''
@@ -58,7 +58,7 @@ def main():
             st.write("embedding loaded from disk")
         else:
             
-            embeddings = OpenAIEmbeddings(os.getenv("OPENAI_API_KEY3"))
+            embeddings = OpenAIEmbeddings(os.getenv("OPENAI_API_KEY"))
             vector_store = Chroma.from_documents(chunk, embedding = embeddings)
             with open(f"{store_name}.pkl", "wb") as f:
                 pickle.dump(vector_store, f)
